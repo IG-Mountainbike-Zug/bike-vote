@@ -1,12 +1,11 @@
 import "./globals.css";
-import {type ReactNode} from "react";
-import {Analytics} from "@vercel/analytics/react";
-import {Sidebar} from "~/components/sidebar";
-
+import { type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
+import { Sidebar } from "~/components/sidebar";
 
 export const metadata = {
-    title: `Wahlen 2023`,
-    description: `Wahlen 2023 by IG Mountainbike Zug`,
+  title: `Wahlen 2023`,
+  description: `Wahlen 2023 by IG Mountainbike Zug`,
 };
 
 // const navigation = {
@@ -78,15 +77,13 @@ export const metadata = {
 //     )
 // }
 
-
-export default function RootLayout({children}: { children: ReactNode }) {
-
-    return (
-        <html lang="de" className="h-full bg-white">
-        <body className="h-full">
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="de" className="h-full bg-white">
+      <body className="h-full">
         <Sidebar>{children}</Sidebar>
-        <Analytics/>
-        </body>
-        </html>
-    );
+        <Analytics />
+      </body>
+    </html>
+  );
 }
