@@ -1,6 +1,5 @@
 import "./globals.css";
 import { type ReactNode } from "react";
-import { Analytics } from "@vercel/analytics/react";
 import { Sidebar } from "~/components/sidebar";
 
 export const runtime = "edge";
@@ -84,7 +83,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="de" className="h-full bg-white">
       <body className="h-full">
         <Sidebar>{children}</Sidebar>
-        <Analytics />
       </body>
     </html>
   );
