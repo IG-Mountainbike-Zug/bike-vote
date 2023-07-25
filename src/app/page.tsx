@@ -1,5 +1,3 @@
-// export const runtime = "edge";
-
 const WelcomeText = () => {
   return (
     <div className="p-6">

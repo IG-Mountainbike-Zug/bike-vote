@@ -1,4 +1,3 @@
-import { PaperClipIcon } from "@heroicons/react/20/solid";
 import { getData } from "~/model/getdata";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -68,4 +67,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </div>
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const data = await getData("zg");
+
+  return data.samples.map((x) => ({
+    slug: x.slug,
+  }));
 }

@@ -3,6 +3,8 @@ import { type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { Sidebar } from "~/components/sidebar";
 
+export const runtime = "edge";
+
 export const metadata = {
   title: `Wahlen 2023`,
   description: `Wahlen 2023 by IG Mountainbike Zug`,
