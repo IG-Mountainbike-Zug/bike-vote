@@ -35,7 +35,7 @@ export default function Page() {
       <p className="mb-4">
         Bitte beachte, dass wir bemüht sind, alle Informationen so objektiv und
         unparteiisch wie möglich darzustellen. Solltest du Fragen oder
-        Anregungen haben, zögere bitte nicht, uns über die 'Kontakt'-Seite zu
+        Anregungen haben, zögere bitte nicht, uns über die Kontakt-Seite zu
         erreichen. Viel Spass beim Erkunden der Plattform!
       </p>
     </>
