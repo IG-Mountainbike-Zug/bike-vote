@@ -1,14 +1,6 @@
 .scatterplotSquare {
     fill-opacity: .7;
     stroke-width: .5px;
-    stroke: "white";
-}
-
-.dimmed {
-    opacity: 0;
-    transition: opacity;
-    transition-delay: .5s;
-    transition-duration: .5s;
 }
 
 .scatterplotSquare:hover {
@@ -18,5 +10,3 @@
     fill-opacity: 1;
     stroke-width: 2px;
 }
-
-

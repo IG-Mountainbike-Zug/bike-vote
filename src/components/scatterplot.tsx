@@ -9,7 +9,7 @@ import { Tooltip } from "./tooltip";
 
 export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
   // Sort the data: bigger squares must appear at the bottom
-  const sortedData = data.sort((a, b) => b.size - a.size);
+  // const sortedData = data.sort((a, b) => b.size - a.size);
 
   // State
   const [interactionData, setInteractionData] = useState<InteractionData>();
@@ -20,16 +20,11 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
   const sizeScale = d3.scaleSqrt().domain([0, 8]).range([3, 40]);
 
   // All squares, 1 per country
-  const squares = sortedData.map((d, i) => {
-    const size = sizeScale(8);
+  const squares = data.map((d, i) => {
+    const size = sizeScale(1);
 
     const xPos = xScale(d.x) - size / 2;
     const yPos = yScale(d.y) - size / 2;
-
-    const isDimmed = interactionData && interactionData.color !== d.color;
-    const className = isDimmed
-      ? styles.scatterplotSquare + " " + styles.dimmed
-      : styles.scatterplotSquare;
 
     return (
       <g
@@ -49,7 +44,7 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
           opacity={1}
           fill={d.color}
           r={size / 2}
-          className={className}
+          className={styles.scatterplotSquare}
         />
       </g>
     );
@@ -57,10 +52,10 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
 
   // Build the annotations (black rectangle and country name)
   // This is made separately, because it needs to appear on top of all colored rectangles
-  const annotations = sortedData
+  const annotations = data
     .filter((d) => d.annotation)
     .map((d, i) => {
-      const size = sizeScale(8);
+      const size = sizeScale(1);
 
       const x = xScale(d.x); // position of the baricenter of the square
       const y = yScale(d.y);
@@ -79,9 +74,6 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
           ? y + size / 2 + 7
           : y;
 
-      const isDimmed = interactionData && interactionData.color !== d.color;
-      const className = isDimmed ? styles.dimmed : "";
-
       const textAnchor =
         d.annotation === "left"
           ? "end"
@@ -90,7 +82,7 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
           : "middle";
 
       return (
-        <g key={i} className={className}>
+        <g key={i}>
           <circle
             cx={x - size / 2}
             cy={y - size / 2}
