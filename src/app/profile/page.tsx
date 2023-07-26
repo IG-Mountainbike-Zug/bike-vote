@@ -15,20 +15,18 @@ export default function Page({ params }: { params: { slug: string } }) {
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
-            Users
+            Politiker*innen
           </h1>
           <p className="mt-2 text-sm text-gray-700">
-            A list of all the users in your account including their name, title,
-            email and role.
+            Hier findest du die vollständige Liste aller Politiker*innen aus dem
+            Kanton Zug, die an unserer Umfrage zum Thema Mountainbike
+            teilgenommen haben. Du kannst durch die Liste stöbern, nach
+            bestimmten Namen suchen und die Antworten jeder einzelnen Person auf
+            die gestellten Fragen einsehen. So erhältst du einen direkten
+            Einblick, wie sich jede einzelne Politiker*in zu den Themen rund um
+            das Mountainbiken positioniert. Finde heraus, wer deine Interessen
+            am besten vertritt und mache dir ein eigenes Bild!
           </p>
-        </div>
-        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <button
-            type="button"
-            className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Add user
-          </button>
         </div>
       </div>
       <div className="mt-8 flow-root">
@@ -54,12 +52,6 @@ export default function Page({ params }: { params: { slug: string } }) {
                     className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
                   >
                     Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="sticky top-16 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
-                  >
-                    Role
                   </th>
                   <th
                     scope="col"
@@ -91,14 +83,8 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
                       {person.email}
                     </td>
-                    <td className="px-3 py-4 text-sm text-gray-500">
-                      {person.role}
-                    </td>
                     <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-8 lg:pr-8">
-                      <a
-                        href="#"
-                        className="text-indigo-600 hover:text-indigo-900"
-                      >
+                      <a href="#" className="text-sky-600 hover:text-sky-900">
                         Edit<span className="sr-only">, {person.name}</span>
                       </a>
                     </td>

@@ -6,8 +6,10 @@ import {
   ChartPieIcon,
   Cog6ToothIcon,
   HomeIcon,
-  UsersIcon,
+  UserGroupIcon,
   XMarkIcon,
+  InformationCircleIcon,
+  ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
@@ -21,21 +23,33 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
   const navigation = [
     {
       name: "Einleitung",
-      href: "/",
       icon: HomeIcon,
+      href: "/",
       current: pathname === "/",
     },
     {
       name: "Politiker*innen",
+      icon: UserGroupIcon,
       href: "/profile",
-      icon: UsersIcon,
       current: pathname.startsWith("/profile"),
     },
     {
       name: "Visualisierungen",
-      href: "/visualisierungen",
       icon: ChartPieIcon,
+      href: "/visualisierungen",
       current: pathname.startsWith("/visualisierungen"),
+    },
+    {
+      name: "Über die Plattform",
+      icon: InformationCircleIcon,
+      href: "/ueber",
+      current: pathname.startsWith("/ueber"),
+    },
+    {
+      name: "Kontakt",
+      icon: ChatBubbleBottomCenterTextIcon,
+      href: "/kontakt",
+      current: pathname.startsWith("/kontakt"),
     },
   ];
 
