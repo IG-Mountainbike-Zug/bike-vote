@@ -10,12 +10,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-
-const navigation = [
-  { name: "Einleitung", href: "/", icon: HomeIcon, current: true },
-  { name: "Politiker*innen", href: "#", icon: UsersIcon, current: false },
-  { name: "Visualisierungen", href: "#", icon: ChartPieIcon, current: false },
-];
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -23,6 +19,28 @@ function classNames(...classes: string[]) {
 
 export const Sidebar = ({ children }: { children: ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const pathname = usePathname();
+  const navigation = [
+    {
+      name: "Einleitung",
+      href: "/",
+      icon: HomeIcon,
+      current: pathname === "/",
+    },
+    {
+      name: "Politiker*innen",
+      href: "/profile",
+      icon: UsersIcon,
+      current: pathname.startsWith("/profile"),
+    },
+    {
+      name: "Visualisierungen",
+      href: "/visualisierungen",
+      icon: ChartPieIcon,
+      current: pathname.startsWith("/visualisierungen"),
+    },
+  ];
 
   return (
     <>
@@ -94,7 +112,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
+                                <Link
                                   href={item.href}
                                   className={classNames(
                                     item.current
@@ -113,7 +131,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -156,7 +174,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
                           className={classNames(
                             item.current
@@ -175,7 +193,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -217,7 +235,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
               <form className="relative flex flex-1" action="#" method="GET">
                 <label htmlFor="search-field" className="sr-only">
-                  Search
+                  Suchen
                 </label>
                 <MagnifyingGlassIcon
                   className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
@@ -226,7 +244,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                 <input
                   id="search-field"
                   className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                  placeholder="Search..."
+                  placeholder="Suchen..."
                   type="search"
                   name="search"
                 />
