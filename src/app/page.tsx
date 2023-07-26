@@ -1,5 +1,5 @@
-import { Scatterplot } from "~/components/scatterplot";
-import { data } from "~/app/data";
+import { Scatterplot } from "~/components/plot/scatterplot";
+import { data } from "~/components/plot/data";
 
 const WelcomeText = () => {
   return (

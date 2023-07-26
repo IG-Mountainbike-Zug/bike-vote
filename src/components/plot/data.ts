@@ -1,4 +1,4 @@
-import { type DataItem } from "~/components/types";
+import { type DataItem } from "~/components/plot/types";
 
 export const data: DataItem[] = [
   {

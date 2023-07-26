@@ -4,6 +4,7 @@ export type DataItem = {
   y: number;
   color: string;
   categoryy: "RED" | "GREEN" | "YELLOW" | "BLUE";
+  size: number;
   annotation?: "top" | "right" | "left" | "bottom";
 };
 
