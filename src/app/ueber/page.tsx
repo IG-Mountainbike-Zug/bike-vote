@@ -1,4 +1,4 @@
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page() {
   return (
     <>
       <div className="mb-5 border-b border-gray-200 pb-5">

@@ -1,7 +1,7 @@
 import { Scatterplot } from "~/components/plot/scatterplot";
 import { data } from "~/components/plot/data";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page() {
   return (
     <>
       <div className="border-b border-gray-200 pb-5">

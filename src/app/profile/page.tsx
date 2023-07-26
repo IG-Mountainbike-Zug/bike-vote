@@ -1,6 +1,4 @@
-import { classNames } from "~/lib/classNames";
-
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page() {
   const people = [];
   for (let i = 0; i < 1000; i++) {
     people.push({
