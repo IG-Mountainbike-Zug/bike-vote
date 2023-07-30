@@ -127,7 +127,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                                   href={item.href}
                                   className={classNames(
                                     item.current
-                                      ? "bg-gray-50 text-sky-600"
+                                      ? "bg-slate-100 text-sky-600"
                                       : "text-gray-700 hover:bg-gray-50 hover:text-sky-600",
                                     "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                                   )}
@@ -146,18 +146,6 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                               </li>
                             ))}
                           </ul>
-                        </li>
-                        <li className="mt-auto">
-                          <a
-                            href="#"
-                            className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-600"
-                          >
-                            <Cog6ToothIcon
-                              className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-sky-600"
-                              aria-hidden="true"
-                            />
-                            Einstellungen
-                          </a>
                         </li>
                       </ul>
                     </nav>
@@ -189,7 +177,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-gray-50 text-sky-600"
+                              ? "bg-slate-100 text-sky-600"
                               : "text-gray-700 hover:bg-gray-50 hover:text-sky-600",
                             "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                           )}
@@ -209,18 +197,6 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                     ))}
                   </ul>
                 </li>
-                {/*<li className="mt-auto">*/}
-                {/*  <a*/}
-                {/*    href="#"*/}
-                {/*    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-600"*/}
-                {/*  >*/}
-                {/*    <Cog6ToothIcon*/}
-                {/*      className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-sky-600"*/}
-                {/*      aria-hidden="true"*/}
-                {/*    />*/}
-                {/*    Settings*/}
-                {/*  </a>*/}
-                {/*</li>*/}
               </ul>
             </nav>
           </div>

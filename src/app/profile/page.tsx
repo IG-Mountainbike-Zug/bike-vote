@@ -1,13 +1,14 @@
-export default function Page() {
-  const people = [];
-  for (let i = 0; i < 1000; i++) {
-    people.push({
-      name: "Lindsay Walton",
-      title: "Front-end Developer",
-      email: "lindsay.walton@example.com",
-      role: "Member",
-    });
-  }
+import Link from "next/link";
+import { getData } from "~/lib/getdata";
+
+export default async function Page() {
+  const data = await getData("zg");
+  const items = data.samples.map((x) => ({
+    name: x.name,
+    slug: x.slug,
+    party: data.parties.find((p) => p.id === x.partyId),
+  }));
+
   return (
     <>
       <div className="sm:flex sm:items-center">
@@ -43,48 +44,51 @@ export default function Page() {
                     scope="col"
                     className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell"
                   >
-                    Title
+                    Partei
                   </th>
-                  <th
-                    scope="col"
-                    className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
-                  >
-                    Email
-                  </th>
+                  {/*<th*/}
+                  {/*  scope="col"*/}
+                  {/*  className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"*/}
+                  {/*>*/}
+                  {/*  Email*/}
+                  {/*</th>*/}
                   <th
                     scope="col"
                     className="sticky top-16 z-10 border-b border-gray-300 bg-white bg-opacity-75 py-3.5 pl-3 pr-4 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8"
                   >
-                    <span className="sr-only">Edit</span>
+                    <span className="sr-only">Anzeigen</span>
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {people.map((person) => (
-                  <tr key={person.email}>
+                {items.map((person) => (
+                  <tr key={person.slug}>
                     <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6 lg:pl-8">
                       {person.name}
                       <dl className="font-normal lg:hidden">
                         <dt className="sr-only">Title</dt>
                         <dd className="mt-1 truncate text-gray-700">
-                          {person.title}
+                          {person.party?.name}
                         </dd>
-                        <dt className="sr-only sm:hidden">Email</dt>
-                        <dd className="mt-1 truncate text-gray-500 sm:hidden">
-                          {person.email}
-                        </dd>
+                        {/*<dt className="sr-only sm:hidden">Email</dt>*/}
+                        {/*<dd className="mt-1 truncate text-gray-500 sm:hidden">*/}
+                        {/*  {person.email}*/}
+                        {/*</dd>*/}
                       </dl>
                     </td>
                     <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                      {person.title}
+                      {person.party?.name}
                     </td>
-                    <td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                      {person.email}
-                    </td>
+                    {/*<td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">*/}
+                    {/*  {person.email}*/}
+                    {/*</td>*/}
                     <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-8 lg:pr-8">
-                      <a href="#" className="text-sky-600 hover:text-sky-900">
-                        Edit<span className="sr-only">, {person.name}</span>
-                      </a>
+                      <Link
+                        href={`./profile/${person.slug}`}
+                        className="text-sky-600 hover:text-sky-900"
+                      >
+                        Anzeigen<span className="sr-only">, {person.name}</span>
+                      </Link>
                     </td>
                   </tr>
                 ))}

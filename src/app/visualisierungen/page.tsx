@@ -1,7 +1,9 @@
 import { Scatterplot } from "~/components/plot/scatterplot";
-import { data } from "~/components/plot/data";
+import { getDataMds } from "~/lib/getdata";
 
-export default function Page() {
+export default async function Page() {
+  const data = await getDataMds("zg");
+
   return (
     <>
       <div className="border-b border-gray-200 pb-5">
