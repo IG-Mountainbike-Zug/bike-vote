@@ -24,25 +24,25 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
 
       <div className={styles.topHalfContainer} style={{ borderColor: color }}>
         <div className={styles.row}>
-          <span>Vulnerability index</span>
-          <b>{Math.round(x * 100) / 100}</b>
+          <span>Partei</span>
+          <b>{}</b>
         </div>
-        <div className={styles.row}>
-          <span>Readiness index</span>
-          <b>{Math.round(y * 100) / 100}</b>
-        </div>
+        {/*<div className={styles.row}>*/}
+        {/*  <span>Readiness index</span>*/}
+        {/*  <b>{Math.round(y * 100) / 100}</b>*/}
+        {/*</div>*/}
       </div>
 
-      <div className={styles.separator} />
+      {/*<div className={styles.separator} />*/}
 
-      <div className={styles.row}>
-        <span>
-          CO2 emission
-          <br />
-          (tons per capita)
-        </span>
-        <b>{Math.round(size * 100) / 100}</b>
-      </div>
+      {/*<div className={styles.row}>*/}
+      {/*  <span>*/}
+      {/*    CO2 emission*/}
+      {/*    <br />*/}
+      {/*    (tons per capita)*/}
+      {/*  </span>*/}
+      {/*  <b>{Math.round(size * 100) / 100}</b>*/}
+      {/*</div>*/}
     </div>
   );
 };

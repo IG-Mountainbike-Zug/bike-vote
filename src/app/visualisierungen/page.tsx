@@ -10,7 +10,7 @@ export default async function Page() {
         <h1 className="text-base font-semibold leading-6 text-gray-900">
           Visualisierungen
         </h1>
-        <p className="mt-2 max-w-4xl text-sm text-gray-500">
+        <p className="mt-2 max-w-4xl text-sm text-gray-700">
           Hier kannst du auf einen Blick erkennen, wo Gemeinsamkeiten und
           Unterschiede in den Ansichten der Politiker*innen liegen. Unsere
           Visualisierungen helfen dir, die Vielfalt der Positionen zum Thema
