@@ -1,6 +1,6 @@
 import { getData } from "~/lib/getdata";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function page({ params }: { params: { slug: string } }) {
   const data = await getData("zg");
   const person = data.samples.find((d) => d.slug === params.slug);
   const party = data.parties.find((p) => p.id === person?.partyId);
