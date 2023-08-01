@@ -1,10 +1,9 @@
 "use client";
-import { Fragment, type ReactNode, useState } from "react";
+import { Fragment, type ReactNode, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   ChartPieIcon,
-  Cog6ToothIcon,
   HomeIcon,
   UserGroupIcon,
   XMarkIcon,
@@ -15,9 +14,11 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { classNames } from "~/lib/classNames";
+import { SearchContext } from "~/app/search-provider";
 
 export const Sidebar = ({ children }: { children: ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { search, setSearch } = useContext(SearchContext);
 
   const pathname = usePathname();
   const navigation = [
@@ -218,7 +219,6 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
               className="h-6 w-px bg-gray-200 lg:hidden"
               aria-hidden="true"
             />
-
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
               <form className="relative flex flex-1" action="#" method="GET">
                 <label htmlFor="search-field" className="sr-only">
@@ -234,6 +234,8 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                   placeholder="Suchen..."
                   type="search"
                   name="search"
+                  value={search}
+                  onInput={(e) => setSearch(e.currentTarget.value)}
                 />
               </form>
             </div>

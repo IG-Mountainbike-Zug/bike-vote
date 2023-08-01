@@ -1,4 +1,9 @@
+"use client";
+import { SearchContext } from "./search-provider";
+import { useContext } from "react";
+
 const WelcomeText = () => {
+  const { search } = useContext(SearchContext);
   return (
     <>
       <h1 className="mb-4 text-3xl">

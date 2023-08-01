@@ -1,6 +1,7 @@
 import "./globals.css";
 import { type ReactNode } from "react";
 import { Sidebar } from "~/components/sidebar";
+import SearchProvider from "./search-provider";
 
 export const runtime = "edge";
 
@@ -82,7 +83,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="de" className="h-full bg-white">
       <body className="h-full">
-        <Sidebar>{children}</Sidebar>
+        <SearchProvider>
+          <Sidebar>{children}</Sidebar>
+        </SearchProvider>
       </body>
     </html>
   );
