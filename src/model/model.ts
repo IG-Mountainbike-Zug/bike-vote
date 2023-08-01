@@ -14,6 +14,12 @@ export interface ISample {
 export interface IQuestion {
   id: number;
   text: string;
+  answers: IAnswerOption[];
+}
+
+export interface IAnswerOption {
+  value: number;
+  text: string;
 }
 
 export interface IParty {
