@@ -90,7 +90,9 @@ party_info <- tibble(
 ```{r}
 source('export_json.R')
 
-result <- export_data_to_json(data, party_info, ordinal_map, new_names)
+filtered_data <- data %>% filter(canton == "Zug")
+
+result <- export_data_to_json(filtered_data, party_info, ordinal_map, new_names)
 result
 ```
 

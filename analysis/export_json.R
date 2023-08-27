@@ -5,7 +5,7 @@ library(jsonlite)
 
 generate_sample <- function(row) {
   list(
-    slug = tolower(gsub(" ", "-", row$name)),
+    slug = URLencode(tolower(gsub(" ", "-", row$name))),
     name = row$name,
     partyId = which(party_info$name == row$party),
     ridesMtb = if_else(row$mtb_active == "1", TRUE, FALSE),
@@ -20,13 +20,12 @@ generate_sample <- function(row) {
 }
 
 export_data_to_json <- function(data, party_info, ordinal_map, new_names) {
-  
   # Common answers list based on ordinal_map
   common_answers <- map2(
     unname(ordinal_map), 
     names(ordinal_map), 
     ~ list(
-      value = .x,
+      value = .x + 1,
       text = .y
     )
   )
