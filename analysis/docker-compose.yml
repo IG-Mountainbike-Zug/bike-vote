@@ -1,0 +1,11 @@
+version: '3'
+services:
+        rstudio:
+          build:
+            dockerfile: dockerfiles/r/Dockerfile
+          ports:
+            - "8787:8787"
+          environment:
+            DISABLE_AUTH: true 
+          volumes:
+            - ./:/home/rstudio/workspace

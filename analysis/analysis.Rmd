@@ -1,0 +1,120 @@
+---
+title: "Survey Analysis"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(cluster)
+library(Rtsne)
+```
+
+```{r}
+data <- readxl::read_excel("Fragebogen_Responses.xlsx")
+data <- subset(data, select = -c(1))
+str(data)
+```
+
+## Cleanup
+
+```{r}
+# Create a list of old and new names
+new_names <- c("name" = "Vorname Name",
+               "party" = "Partei",
+               "canton" = "Kanton",
+               "mtb_active" = "Fahren sie aktiv Mountainbike?",
+               "mtb_support_tolerace" = "Ich unterstütze die gemeinsame Nutzung von Wanderwegen auf denen Mountainbikerinnen, Mountainbiker und Wandernde gleichermassen willkommen sind (Trail Toleranz).",
+               "mtb_positive_health" = "Mountainbiken als Freizeitaktivität hat einen positiven Einfluss auf die Gesundheit der Bevölkerung.",         
+               "mtb_infra_funding" = "Die öffentliche Hand unterstützt künftig den Ausbau und Unterhalt von mountainbikefreundlicher Infrastruktur und Institutionen auf lokaler und nationaler Ebene.",
+               "mtb_region_quali" = "Ein attraktives Mountainbike Netz trägt zur Standortqualität einer Region bei.",
+               "mtb_attr_supply" = "Eine nachhaltige Lenkung von Mountainbikenden erfolgt über ein attraktives Angebot.",
+               "mtb_economy" = "Mountainbiken ist ein wichtiger Wirtschaftsfaktor und schafft Arbeitsplätze sowie Lehrstellen.",
+               "mtb_tourism" = "Mountainbiken ist ein wichtiger Tourismusfaktor mit großem Potenzial.",
+               "mtb_interests" = "Die politischen Interessen der Mountainbikerinnen und Mountainbiker sind im nationalen Vergleich mit anderen Breitensportarten untervertreten und müssen gestärkt werden.",
+               "mtb_statement" = "Was möchten Sie in der kommenden Legislaturperiode für den Mountainbikesport aktiv erreichen? (optional, Freitext max. 300 Zeichen)")
+
+
+ordinal_map <- c(
+  "stimme überhaupt nicht zu" = 0,
+  "stimme nicht zu" = 1,
+  "stimme zu" = 2,
+  "stimme voll und ganz zu" = 3
+)
+```
+
+### Prepare data
+
+```{r}
+data <- data %>%
+  rename(!!!new_names) %>%  # Using '!!!' to splice the list into individual arguments
+  mutate(mtb_active = recode(mtb_active, "Ja" = 1, "Nein" = 0)) %>%
+  mutate(across(-c(name, party, canton, mtb_active, mtb_statement), ~recode(., !!!ordinal_map))) %>%
+  mutate(across(-c(name, party, canton, mtb_active, mtb_statement), ~factor(.x, c("0","1","2","3"), ordered = TRUE))) %>%
+  mutate(mtb_active = factor(mtb_active, ordered = FALSE))
+
+str(data)
+```
+
+### Extract parties
+
+```{r}
+party_colors <- c("GLP" = "#999900",
+               "Grüne" = "#5D8132",
+               "SP" = "#D0362E",
+               "SVP" = "#4F9141",
+               "JSVP" = "#4F9141",
+               "PARAT" = "#9E0F7F",
+               "EVP" = "#996E00",
+               "Die Mitte" = "#B56100",
+               "Christlich-Soziale Partei" = "#288186",
+               "FDP" = "#3872B5")
+
+# Assign colors, using a default if not found in my_colors
+unique_parties <- unique(data$party)
+assigned_colors <- coalesce(party_colors[unique_parties], "#000000")
+
+party_info <- tibble(
+  id = seq_along(unique_parties),
+  name = unique_parties,
+  color = assigned_colors
+)
+```
+
+## Export
+
+```{r}
+source('export_json.R')
+
+result <- export_data_to_json(data, party_info, ordinal_map, new_names)
+result
+```
+
+## MDS
+
+```{r}
+mds_data <- subset(data, select = -c(name, party, canton, mtb_statement))
+
+# calculating Gower distances
+gower_dist <- daisy(mds_data, metric = "gower")
+
+print(gower_dist)
+
+mds <- cmdscale(gower_dist)
+print(mds)
+
+plot(mds, xlab="Coordinate 1", ylab="Coordinate 2", main="MDS plot", pch=19)
+```
+
+## t-SNE
+
+```{r}
+tsne_model <- Rtsne(as.matrix(gower_dist), is_distance = TRUE, perplexity = 7)
+
+plot(tsne_model$Y, t='n', main="t-SNE Plot", xlab="", ylab="")
+text(tsne_model$Y, labels=rownames(gower_dist), cex=0.6, col="blue")
+```
