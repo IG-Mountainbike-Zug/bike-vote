@@ -68,7 +68,14 @@ export default async function Page() {
                       <dl className="font-normal lg:hidden">
                         <dt className="sr-only">Title</dt>
                         <dd className="mt-1 truncate text-gray-700">
-                          {person.party?.name}
+                          {person.party?.color && (
+                            <span
+                              className="inline-flex items-center rounded-lg px-2.5 py-0.5 text-xs font-medium text-white"
+                              style={{ backgroundColor: person.party.color }}
+                            >
+                              {person.party?.name}
+                            </span>
+                          )}
                         </dd>
                         {/*<dt className="sr-only sm:hidden">Email</dt>*/}
                         {/*<dd className="mt-1 truncate text-gray-500 sm:hidden">*/}
@@ -77,7 +84,14 @@ export default async function Page() {
                       </dl>
                     </td>
                     <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                      {person.party?.name}
+                      {person.party?.color && (
+                        <span
+                          className="inline-flex items-center rounded-lg px-2.5 py-0.5 text-xs font-medium text-white"
+                          style={{ backgroundColor: person.party.color }}
+                        >
+                          {person.party?.name}
+                        </span>
+                      )}
                     </td>
                     {/*<td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">*/}
                     {/*  {person.email}*/}
