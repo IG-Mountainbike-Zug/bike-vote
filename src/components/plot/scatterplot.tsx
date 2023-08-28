@@ -15,8 +15,8 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
   const [interactionData, setInteractionData] = useState<InteractionData>();
 
   // Scales
-  const xScale = d3.scaleLinear().domain([-1, 1]).range([0, width]);
-  const yScale = d3.scaleLinear().domain([-1, 1]).range([height, 0]);
+  const xScale = d3.scaleLinear().domain([-0.5, 0.5]).range([0, width]);
+  const yScale = d3.scaleLinear().domain([-0.5, 0.5]).range([height, 0]);
   const sizeScale = d3.scaleSqrt().domain([0, 8]).range([3, 40]);
 
   // All squares, 1 per country
@@ -37,6 +37,9 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
           })
         }
         onMouseLeave={() => setInteractionData(undefined)}
+        onClick={() => {
+          window.location.href = `../profile/${d.slug}`;
+        }}
       >
         <circle
           cx={xPos}
@@ -53,7 +56,7 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
   // Build the annotations (black rectangle and country name)
   // This is made separately, because it needs to appear on top of all colored rectangles
   const annotations = data
-    // .filter((d) => d.annotation)
+    .filter((d) => d.annotation)
     .map((d, i) => {
       const size = sizeScale(1);
       const x = xScale(d.x); // position of the baricenter of the square
@@ -110,7 +113,7 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
     <div style={{ position: "relative" }}>
       <svg width={width} height={height}>
         <g>
-          {/*<Axes x={xScale(50)} y={yScale(50)} width={width} height={height} />*/}
+          <Axes x={xScale(0)} y={yScale(0)} width={width} height={height} />
           {squares}
           {annotations}
         </g>

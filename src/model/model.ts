@@ -6,6 +6,7 @@ export interface IAnswer {
 export interface ISample {
   slug: string;
   name: string;
+  ridesMtb: boolean;
   partyId: number;
   answers: IAnswer[];
   statement: string;

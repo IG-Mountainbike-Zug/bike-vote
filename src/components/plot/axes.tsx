@@ -35,7 +35,7 @@ export const Axes = ({ x, y, width, height }: AxesProps) => {
         textRendering={"optimizeLegibility"}
         dominantBaseline={"Auto"}
       >
-        Pro Mountainbike
+        Fährt selber Mountainbike
       </text>
       <text
         x={0}
@@ -56,7 +56,7 @@ export const Axes = ({ x, y, width, height }: AxesProps) => {
         textRendering={"optimizeLegibility"}
         dominantBaseline={"Hanging"}
       >
-        Low Readiness
+        Fährt kein Mountainbike
       </text>
       <text
         x={0}

@@ -45,7 +45,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             &#10094;&nbsp;Alle anzeigen
           </Link>
           <h3 className="text-3xl font-semibold text-gray-900">
-            {person?.name}
+            {person?.name} {person?.ridesMtb && "🚵"}
           </h3>
           {party?.color && (
             <p

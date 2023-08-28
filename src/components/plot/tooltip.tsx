@@ -10,7 +10,7 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
     return null;
   }
 
-  const { xPos, yPos, name, color, x, y, size } = interactionData;
+  const { xPos, yPos, name, party, slug, color, x, y, size } = interactionData;
 
   return (
     <div
@@ -24,7 +24,7 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
 
       <div className={styles.topHalfContainer} style={{ borderColor: color }}>
         <div className={styles.row}>
-          <span>Partei</span>
+          <span>{party}</span>
           <b>{}</b>
         </div>
         {/*<div className={styles.row}>*/}

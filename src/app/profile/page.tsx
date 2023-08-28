@@ -3,11 +3,13 @@ import { getData } from "~/lib/getdata";
 
 export default async function Page() {
   const data = await getData("zg");
-  const items = data.samples.map((x) => ({
-    name: x.name,
-    slug: x.slug,
-    party: data.parties.find((p) => p.id === x.partyId),
-  }));
+  const items = data.samples
+    .map((x) => ({
+      name: x.name,
+      slug: x.slug,
+      party: data.parties.find((p) => p.id === x.partyId),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
