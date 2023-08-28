@@ -3,9 +3,13 @@ library(dplyr)
 library(purrr)
 library(jsonlite)
 
+generate_slug <- function(value) {
+  return(URLencode(tolower(gsub(" ", "-", value))))
+}
+
 generate_sample <- function(row) {
   list(
-    slug = URLencode(tolower(gsub(" ", "-", row$name))),
+    slug = generate_slug(row$name),
     name = row$name,
     partyId = which(party_info$name == row$party),
     ridesMtb = if_else(row$mtb_active == "1", TRUE, FALSE),
@@ -68,6 +72,29 @@ export_data_to_json <- function(data, party_info, ordinal_map, new_names) {
   
   # Save to file if needed
   writeLines(json_text, "export.json")
+  
+  return("JSON file has been created.")
+}
+
+export_mds_to_json <- function(data) {
+  # Create JSON object
+  json_data <- data %>% 
+    mutate(
+      slug = generate_slug(name),
+      x = V1,
+      y = V2
+    ) %>% 
+    dplyr::select(slug, name, color, party, x, y)
+  
+  
+  # Convert to JSON
+  json_text <- jsonlite::toJSON(json_data, pretty = TRUE, auto_unbox = TRUE)
+  
+  # Print JSON
+  # print(json_text)
+  
+  # Save to file if needed
+  writeLines(json_text, "export_mds.json")
   
   return("JSON file has been created.")
 }
