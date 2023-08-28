@@ -12,7 +12,7 @@ export default async function Page() {
         </h1>
         <p className="mt-2 max-w-4xl text-sm text-gray-700">
           Hier kannst du auf einen Blick erkennen, wo Gemeinsamkeiten und
-          Unterschiede in den Ansichten der Politiker*innen liegen. Unsere
+          Unterschiede in den Ansichten der Kandidat*innen liegen. Unsere
           Visualisierungen helfen dir, die Vielfalt der Positionen zum Thema
           Mountainbiking im Kanton Zug besser zu verstehen und zu
           interpretieren. Tauche ein in die Welt der Daten und entdecke neue

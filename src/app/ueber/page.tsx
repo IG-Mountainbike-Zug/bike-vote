@@ -18,7 +18,7 @@ export default function Page() {
 
       <p className="mb-4">
         Im Vorfeld der Wahlen haben wir einen Fragebogen entwickelt und diesen
-        an alle Politiker*innen im Kanton Zug gesendet. Die Beteiligung war
+        an alle Kandidat*innen im Kanton Zug gesendet. Die Beteiligung war
         freiwillig und die Antworten variieren von Ja/Nein-Antworten zu
         detaillierteren Statements. Die gesammelten Informationen haben wir
         ausgewertet und für dich auf dieser Webseite verfügbar gemacht.
@@ -28,7 +28,7 @@ export default function Page() {
         Unsere Hoffnung ist, dass diese Plattform dir hilft, informierte
         Entscheidungen bei den bevorstehenden Wahlen zu treffen. Die Darstellung
         der verschiedenen Positionen und Meinungen kann dir dabei helfen, die
-        Politiker*innen zu identifizieren, die deine Interessen am besten
+        Kandidat*innen zu identifizieren, die deine Interessen am besten
         vertreten.
       </p>
 

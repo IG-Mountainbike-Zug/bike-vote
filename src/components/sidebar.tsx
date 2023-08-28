@@ -29,7 +29,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
       current: pathname === "/",
     },
     {
-      name: "Politiker*innen",
+      name: "Kandidat*innen",
       icon: UserGroupIcon,
       href: "/profile",
       current: pathname.startsWith("/profile"),

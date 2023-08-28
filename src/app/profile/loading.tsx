@@ -4,10 +4,10 @@ export default function Page() {
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
-            Politiker*innen
+            Kandidat*innen
           </h1>
           <p className="mt-2 text-sm text-gray-700">
-            Hier findest du die vollständige Liste aller Politiker*innen aus dem
+            Hier findest du die vollständige Liste aller Kandidat*innen aus dem
             Kanton Zug, die an unserer Umfrage zum Thema Mountainbike
             teilgenommen haben. Du kannst durch die Liste stöbern, nach
             bestimmten Namen suchen und die Antworten jeder einzelnen Person auf
