@@ -46,12 +46,6 @@ export default async function Page() {
                   >
                     Partei
                   </th>
-                  {/*<th*/}
-                  {/*  scope="col"*/}
-                  {/*  className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"*/}
-                  {/*>*/}
-                  {/*  Email*/}
-                  {/*</th>*/}
                   <th
                     scope="col"
                     className="sticky top-16 z-10 border-b border-gray-300 bg-white bg-opacity-75 py-3.5 pl-3 pr-4 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8"
@@ -77,10 +71,6 @@ export default async function Page() {
                             </span>
                           )}
                         </dd>
-                        {/*<dt className="sr-only sm:hidden">Email</dt>*/}
-                        {/*<dd className="mt-1 truncate text-gray-500 sm:hidden">*/}
-                        {/*  {person.email}*/}
-                        {/*</dd>*/}
                       </dl>
                     </td>
                     <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
@@ -93,9 +83,6 @@ export default async function Page() {
                         </span>
                       )}
                     </td>
-                    {/*<td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">*/}
-                    {/*  {person.email}*/}
-                    {/*</td>*/}
                     <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-8 lg:pr-8">
                       <Link
                         href={`./profile/${person.slug}`}

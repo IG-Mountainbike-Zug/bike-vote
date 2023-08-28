@@ -15,8 +15,8 @@ export const Scatterplot = ({ width, height, data }: ScatterplotProps) => {
   const [interactionData, setInteractionData] = useState<InteractionData>();
 
   // Scales
-  const xScale = d3.scaleLinear().domain([0, 100]).range([0, width]);
-  const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]);
+  const xScale = d3.scaleLinear().domain([-1, 1]).range([0, width]);
+  const yScale = d3.scaleLinear().domain([-1, 1]).range([height, 0]);
   const sizeScale = d3.scaleSqrt().domain([0, 8]).range([3, 40]);
 
   // All squares, 1 per country

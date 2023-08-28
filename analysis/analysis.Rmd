@@ -101,8 +101,8 @@ result
 ```{r}
 # mds_data <- subset(data, select = -c(name, party, canton, mtb_statement))
 
-mds_data <- data %>% filter(canton == "Zug") %>%
-  dplyr::select(-c(name, party, canton, mtb_statement))
+filtered_data <- data %>% filter(canton == "Zug")
+mds_data <- filtered_data %>% dplyr::select(-c(name, party, canton, mtb_statement))
 
 # calculating Gower distances
 gower_dist <- daisy(mds_data, metric = "gower")
@@ -116,7 +116,7 @@ coords <- mds$points
 
 # Add party color to the original data frame
 by <- join_by(party == name)
-joined_data <- data %>%
+joined_data <- filtered_data %>%
   left_join(party_info, by) %>%
   mutate(row_num = row_number())
   

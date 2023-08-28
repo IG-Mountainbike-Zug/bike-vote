@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { type RadarplotProps } from "~/components/radar/types";
-import ReactDOM from "react-dom";
 
 export const RadarPlot = ({ name, data }: RadarplotProps) => {
   return (
