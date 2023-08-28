@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getData } from "~/lib/getdata";
 
 type QuestionAnswer = {
@@ -37,12 +38,23 @@ export default async function page({ params }: { params: { slug: string } }) {
     <>
       <div>
         <div className="px-4 sm:px-0">
+          <Link
+            href={`../profile`}
+            className="text-sm text-sky-600 hover:text-sky-900 hover:underline"
+          >
+            &#10094;&nbsp;Alle anzeigen
+          </Link>
           <h3 className="text-3xl font-semibold text-gray-900">
             {person?.name}
           </h3>
-          <p className="text-md mt-1 max-w-2xl leading-6 text-gray-500">
-            {party?.name}
-          </p>
+          {party?.color && (
+            <p
+              className="text-md mt-1 inline-flex max-w-2xl items-center rounded-lg px-2.5 py-0.5 font-medium leading-6 text-white"
+              style={{ backgroundColor: party.color }}
+            >
+              {party?.name}
+            </p>
+          )}
           {person?.statement ? (
             <p className="my-8 max-w-4xl text-lg italic text-gray-800">
               {person?.statement}
