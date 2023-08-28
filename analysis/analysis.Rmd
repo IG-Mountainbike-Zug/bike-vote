@@ -104,12 +104,30 @@ mds_data <- subset(data, select = -c(name, party, canton, mtb_statement))
 # calculating Gower distances
 gower_dist <- daisy(mds_data, metric = "gower")
 
-print(gower_dist)
+# print(gower_dist)
 
-mds <- cmdscale(gower_dist)
-print(mds)
+mds <- cmdscale(gower_dist, k = 2, eig = TRUE)
+# print(mds)
 
-plot(mds, xlab="Coordinate 1", ylab="Coordinate 2", main="MDS plot", pch=19)
+coords <- mds$points
+
+# Add party color to the original data frame
+by <- join_by(party == name)
+joined_data <- data %>%
+  left_join(party_info, by) %>%
+  mutate(row_num = row_number())
+  
+# Convert coords matrix to a dataframe and add row numbers
+coords_df <- as.data.frame(coords)
+coords_df$row_num <- seq_len(nrow(coords_df))
+
+# Merge by row numbers
+enriched_coords <- left_join(coords_df, joined_data %>% select(name, party, color, row_num), by = "row_num")
+
+plot(-enriched_coords[,1], -enriched_coords[,2], xlab="Coordinate 1", ylab="Coordinate 2", main="MDS plot", pch= 19, col = enriched_coords$color)
+text(-enriched_coords[,1], -enriched_coords[,2], labels = enriched_coords$name)
+
+# plot(mds, xlab="Coordinate 1", ylab="Coordinate 2", main="MDS plot", pch=19)
 ```
 
 ## t-SNE
