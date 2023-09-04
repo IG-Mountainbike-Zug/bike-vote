@@ -9,6 +9,7 @@ import {
   XMarkIcon,
   InformationCircleIcon,
   ChatBubbleBottomCenterTextIcon,
+  LockClosedIcon,
 } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
@@ -40,17 +41,29 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
       href: "/visualisierungen",
       current: pathname.startsWith("/visualisierungen"),
     },
-    {
-      name: "Über die Plattform",
-      icon: InformationCircleIcon,
-      href: "/ueber",
-      current: pathname.startsWith("/ueber"),
-    },
+    // {
+    //   name: "Über die Plattform",
+    //   icon: InformationCircleIcon,
+    //   href: "/ueber",
+    //   current: pathname.startsWith("/ueber"),
+    // },
     {
       name: "Kontakt",
       icon: ChatBubbleBottomCenterTextIcon,
       href: "/kontakt",
       current: pathname.startsWith("/kontakt"),
+    },
+    {
+      name: "Datenschutz",
+      icon: LockClosedIcon,
+      href: "/datenschutz",
+      current: pathname.startsWith("/datenschutz"),
+    },
+    {
+      name: "Impressum",
+      icon: InformationCircleIcon,
+      href: "/impressum",
+      current: pathname.startsWith("/impressum"),
     },
   ];
 
@@ -112,11 +125,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=sky&shade=600"
-                        alt="Your Company"
-                      />
+                      <span className="text-2xl">Wahlen 2023</span>
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -162,11 +171,7 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=sky&shade=600"
-                alt="Your Company"
-              />
+              <span className="text-2xl">Wahlen 2023</span>
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
