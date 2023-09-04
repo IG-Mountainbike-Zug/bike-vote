@@ -45,7 +45,7 @@ export default async function page({ params }: { params: { slug: string } }) {
             &#10094;&nbsp;Alle anzeigen
           </Link>
           <h3 className="text-3xl font-semibold text-gray-900">
-            {person?.name} {person?.ridesMtb && "🚵"}
+            {person?.name}
           </h3>
           {party?.color && (
             <p
@@ -55,6 +55,17 @@ export default async function page({ params }: { params: { slug: string } }) {
               {party?.name}
             </p>
           )}
+
+          {person?.ridesMtb ? (
+            <span className="mx-4 inline-flex items-center rounded-md bg-sky-50 px-2 py-1 text-sm font-medium text-sky-600 ring-1 ring-inset ring-sky-500/10">
+              Fährt selber Mountainbike
+            </span>
+          ) : (
+            <span className="mx-4 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+              Fährt kein Mountainbike
+            </span>
+          )}
+
           {person?.statement ? (
             <p className="my-8 max-w-4xl text-lg italic text-gray-800">
               {person?.statement}
