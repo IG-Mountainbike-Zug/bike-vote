@@ -19,8 +19,7 @@ const WelcomeText = () => {
         machen.
       </p>
       <p className="mb-4">
-        Unser Ziel: Dir und den etwa 22&#39;000 aktiven Mountainbikerinnen im
-        Kanton Zug, sowie allen weiteren interessierten Personen, eine
+        Unser Ziel: Dir und allen weiteren interessierten Personen eine
         Entscheidungshilfe zu bieten. Welche Kandidatinnen könnten Deine
         Interessen als Mountainbikerin am besten auf nationaler Ebene vertreten?
         Mit dieser Plattform ermöglichen wir Dir, die Positionen der
@@ -45,6 +44,7 @@ const WelcomeText = () => {
         Kandidat*innen kennen und triff so die beste Wahlentscheidung. Danke für
         Dein Interesse und Deine aktive Teilnahme.
       </p>
+
       <Link href={`/profile`}>
         <button
           type="button"

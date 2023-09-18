@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { getData } from "~/lib/getdata";
+import { RadarPlot } from "~/components/radar/radar";
+import { type Dataset, type RadarplotData } from "~/components/radar/types";
 
 type QuestionAnswer = {
   questionId: number;
+  questionLabel: string;
   questionDisplay: string;
   answerValue: number;
   answerDisplay: string;
@@ -16,6 +19,8 @@ export default async function page({ params }: { params: { slug: string } }) {
   const qa = person?.answers.map(
     (answer): QuestionAnswer => ({
       questionId: answer.questionId,
+      questionLabel:
+        data.questions.find((q) => q.id === answer.questionId)?.label ?? "",
       questionDisplay:
         data.questions.find((q) => q.id === answer.questionId)?.text ?? "",
       answerValue: answer.answer,
@@ -26,14 +31,22 @@ export default async function page({ params }: { params: { slug: string } }) {
     })
   );
 
-  // const radarData =
-  //   qa?.map(
-  //     (item): DataItem => ({
-  //       question: item.questionDisplay,
-  //       value: item.answerValue,
-  //     })
-  //   ) ?? [];
-
+  const radarData: RadarplotData = {
+    labels: qa?.map((q) => q.questionLabel) ?? [],
+    datasets: [
+      {
+        label: person?.name,
+        data: qa?.map((item): number => item.answerValue) ?? [],
+        fill: true,
+        backgroundColor: "rgba(12,74,110, 0.2)",
+        borderColor: "#0c4a6e",
+        pointBackgroundColor: "#0c4a6e",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "#0c4a6e",
+      } as Dataset,
+    ],
+  };
   return (
     <>
       <div>
@@ -90,8 +103,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           </dl>
         </div>
       </div>
-
-      {/*<RadarPlot name={person?.name ?? ""} data={radarData} />*/}
+      <RadarPlot data={radarData} />
     </>
   );
 }

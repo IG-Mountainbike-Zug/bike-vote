@@ -15,7 +15,8 @@ library(Rtsne)
 ```
 
 ```{r}
-data <- readxl::read_excel("Fragebogen_Responses.xlsx")
+# data <- readxl::read_excel("Fragebogen_Responses.xlsx")
+data <- read_csv("Fragebogen_Responses.csv")
 data <- subset(data, select = -c(1))
 str(data)
 ```
@@ -38,6 +39,16 @@ new_names <- c("name" = "Vorname Name",
                "mtb_interests" = "Die politischen Interessen der Mountainbikerinnen und Mountainbiker sind im nationalen Vergleich mit anderen Breitensportarten untervertreten und müssen gestärkt werden.",
                "mtb_statement" = "Was möchten Sie in der kommenden Legislaturperiode für den Mountainbikesport aktiv erreichen? (optional, Freitext max. 300 Zeichen)")
 
+labels <- c(
+"mtb_support_tolerace" = "Trail Toleranz",
+"mtb_positive_health" = "Gesundheitsfaktor",
+"mtb_infra_funding" = "Öffentliche Unterstützung",
+"mtb_region_quali" = "Standortqualität",
+"mtb_attr_supply" = "Angebot & Lenkung",
+"mtb_economy" = "Wirtschaft & Arbeit",
+"mtb_tourism" = "Tourismusfaktor",
+"mtb_interests" = "Politische Vertretung"
+)
 
 ordinal_map <- c(
   "stimme überhaupt nicht zu" = 0,
@@ -92,7 +103,7 @@ source('export_json.R')
 
 filtered_data <- data %>% filter(canton == "Zug")
 
-result <- export_data_to_json(filtered_data, party_info, ordinal_map, new_names)
+result <- export_data_to_json(filtered_data, party_info, ordinal_map, new_names, labels)
 result
 ```
 

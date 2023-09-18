@@ -23,7 +23,7 @@ generate_sample <- function(row) {
   )
 }
 
-export_data_to_json <- function(data, party_info, ordinal_map, new_names) {
+export_data_to_json <- function(data, party_info, ordinal_map, new_names, labels) {
   # Common answers list based on ordinal_map
   common_answers <- map2(
     unname(ordinal_map), 
@@ -45,7 +45,8 @@ export_data_to_json <- function(data, party_info, ordinal_map, new_names) {
   questions_info <- tibble(
     id = seq_along(question_keys),
     key = question_keys,
-    text = new_names[question_keys]
+    text = new_names[question_keys],
+    label = labels[question_keys]
   )
   
   # Create JSON object
@@ -60,7 +61,7 @@ export_data_to_json <- function(data, party_info, ordinal_map, new_names) {
       mutate(
         answers = list(common_answers)
       ) %>% 
-      dplyr::select(id, text, answers),
+      dplyr::select(id, text, label, answers),
     samples = lapply(1:nrow(data), function(i) generate_sample(data[i, ]))
   )
   

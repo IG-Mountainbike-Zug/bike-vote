@@ -15,6 +15,7 @@ export interface ISample {
 export interface IQuestion {
   id: number;
   text: string;
+  label: string;
   answers: IAnswerOption[];
 }
 
