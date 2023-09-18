@@ -36,3 +36,11 @@ export interface IKanton {
   questions: IQuestion[];
   samples: ISample[];
 }
+
+export type QuestionAnswer = {
+  questionId: number;
+  questionLabel: string;
+  questionDisplay: string;
+  answerValue: number;
+  answerDisplay: string;
+};

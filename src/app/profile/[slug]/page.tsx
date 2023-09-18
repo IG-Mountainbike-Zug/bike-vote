@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getData } from "~/lib/getdata";
+import { getData, getQuestionAnswer, getRadarData } from "~/lib/getdata";
 import { RadarPlot } from "~/components/radar/radar";
 import { type Dataset, type RadarplotData } from "~/components/radar/types";
 
@@ -16,37 +16,9 @@ export default async function page({ params }: { params: { slug: string } }) {
   const person = data.samples.find((d) => d.slug === params.slug);
   const party = data.parties.find((p) => p.id === person?.partyId);
 
-  const qa = person?.answers.map(
-    (answer): QuestionAnswer => ({
-      questionId: answer.questionId,
-      questionLabel:
-        data.questions.find((q) => q.id === answer.questionId)?.label ?? "",
-      questionDisplay:
-        data.questions.find((q) => q.id === answer.questionId)?.text ?? "",
-      answerValue: answer.answer,
-      answerDisplay:
-        data.questions
-          .find((q) => q.id === answer.questionId)
-          ?.answers?.find((a) => a.value === answer.answer)?.text ?? "",
-    })
-  );
+  const qa = await getQuestionAnswer(person);
+  const radarData = await getRadarData(person);
 
-  const radarData: RadarplotData = {
-    labels: qa?.map((q) => q.questionLabel) ?? [],
-    datasets: [
-      {
-        label: person?.name,
-        data: qa?.map((item): number => item.answerValue) ?? [],
-        fill: true,
-        backgroundColor: "rgba(12,74,110, 0.2)",
-        borderColor: "#0c4a6e",
-        pointBackgroundColor: "#0c4a6e",
-        pointBorderColor: "#fff",
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "#0c4a6e",
-      } as Dataset,
-    ],
-  };
   return (
     <>
       <div>

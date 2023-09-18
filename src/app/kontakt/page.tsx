@@ -37,7 +37,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="mt-4">
           <p>Folge uns auf unseren Social Media Kanälen:</p>
           <a
-            href="https://www.instagram.com/your_instagram_handle"
+            href="https://www.instagram.com/mtbzug"
             target="_blank"
             rel="noreferrer"
             className="mt-2 text-blue-500 underline"
@@ -46,7 +46,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </a>
           <br />
           <a
-            href="https://www.facebook.com/your_facebook_page"
+            href="https://www.facebook.com/MountainBikeZug/"
             target="_blank"
             rel="noreferrer"
             className="mt-2 text-blue-500 underline"

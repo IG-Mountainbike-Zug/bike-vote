@@ -1,5 +1,7 @@
 import styles from "./tooltip.module.css";
 import { type InteractionData } from "./types";
+import { getData, getRadarData } from "~/lib/getdata";
+import { RadarPlot } from "~/components/radar/radar";
 
 type TooltipProps = {
   interactionData: InteractionData | undefined;

@@ -224,26 +224,26 @@ export const Sidebar = ({ children }: { children: ReactNode }) => {
               className="h-6 w-px bg-gray-200 lg:hidden"
               aria-hidden="true"
             />
-            <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-              <form className="relative flex flex-1" action="#" method="GET">
-                <label htmlFor="search-field" className="sr-only">
-                  Suchen
-                </label>
-                <MagnifyingGlassIcon
-                  className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-                <input
-                  id="search-field"
-                  className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                  placeholder="Suchen..."
-                  type="search"
-                  name="search"
-                  value={search}
-                  onInput={(e) => setSearch(e.currentTarget.value)}
-                />
-              </form>
-            </div>
+            {/*<div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">*/}
+            {/*<form className="relative flex flex-1" action="#" method="GET">*/}
+            {/*  <label htmlFor="search-field" className="sr-only">*/}
+            {/*    Suchen*/}
+            {/*  </label>*/}
+            {/*  <MagnifyingGlassIcon*/}
+            {/*    className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"*/}
+            {/*    aria-hidden="true"*/}
+            {/*  />*/}
+            {/*  <input*/}
+            {/*    id="search-field"*/}
+            {/*    className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"*/}
+            {/*    placeholder="Suchen..."*/}
+            {/*    type="search"*/}
+            {/*    name="search"*/}
+            {/*    value={search}*/}
+            {/*    onInput={(e) => setSearch(e.currentTarget.value)}*/}
+            {/*  />*/}
+            {/*</form>*/}
+            {/*</div>*/}
           </div>
 
           <main className="py-10">
