@@ -2,6 +2,7 @@ import "./globals.css";
 import { type ReactNode } from "react";
 import { Sidebar } from "~/components/sidebar";
 import SearchProvider from "./search-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 export const runtime = "edge";
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SearchProvider>
           <Sidebar>{children}</Sidebar>
         </SearchProvider>
+        <Analytics />
       </body>
     </html>
   );
