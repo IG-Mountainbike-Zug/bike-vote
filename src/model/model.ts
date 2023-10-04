@@ -10,6 +10,7 @@ export interface ISample {
   partyId: number;
   answers: IAnswer[];
   statement: string;
+  score: number;
 }
 
 export interface IQuestion {

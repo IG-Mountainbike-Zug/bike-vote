@@ -34,13 +34,13 @@ export default function Page() {
                     scope="col"
                     className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell"
                   >
-                    Title
+                    Partei
                   </th>
                   <th
                     scope="col"
                     className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
                   >
-                    Email
+                    Score
                   </th>
                   <th
                     scope="col"

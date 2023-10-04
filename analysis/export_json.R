@@ -19,6 +19,7 @@ generate_sample <- function(row) {
         answer = as.integer(row[[.x + 4]])
       )
     ),
+    score = row$normalized_score,
     statement = row$mtb_statement
   )
 }

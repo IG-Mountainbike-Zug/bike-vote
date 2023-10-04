@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getData } from "~/lib/getdata";
+import InfoIcon from "~/components/info-icon";
 
 export default async function Page() {
   const data = await getData("zg");
@@ -8,8 +9,12 @@ export default async function Page() {
       name: x.name,
       slug: x.slug,
       party: data.parties.find((p) => p.id === x.partyId),
+      score: x.score,
     }))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => b.score - a.score);
+
+  const scoreToolTip =
+    "Was bedeutet dieser Score? Dieser Score gibt einen Überblick darüber, wie unterstützend eine Person dem Mountainbiken und den damit verbundenen Aktivitäten gegenübersteht. Ein höherer Score deutet auf stärkere Unterstützung hin, während ein niedrigerer Score eine weniger günstige oder neutrale Haltung anzeigen könnte. Der Score wird anhand der Antworten auf verschiedene Fragen berechnet. Der Score ist normalisiert und variiert zwischen 0 und 100, was einen leichteren Vergleich der Einstellungen zwischen den Personen ermöglicht.";
 
   return (
     <>
@@ -44,9 +49,15 @@ export default async function Page() {
                   </th>
                   <th
                     scope="col"
-                    className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell"
+                    className="sticky top-16 z-10 hidden border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
                   >
                     Partei
+                  </th>
+                  <th
+                    scope="col"
+                    className="sticky top-16 z-10 border-b border-gray-300 bg-white bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                  >
+                    Score <InfoIcon content={scoreToolTip} />
                   </th>
                   <th
                     scope="col"
@@ -84,6 +95,11 @@ export default async function Page() {
                           {person.party?.name}
                         </span>
                       )}
+                    </td>
+                    <td className="px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                      <span className="inline-flex rounded-lg py-0.5 text-sm font-medium text-gray-900">
+                        {Math.round(person.score).toString()}
+                      </span>
                     </td>
                     <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-8 lg:pr-8">
                       <Link

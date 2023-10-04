@@ -96,6 +96,26 @@ party_info <- tibble(
 )
 ```
 
+### Score
+
+```{r}
+data <- data %>%
+  rowwise() %>%
+  mutate(score = (2 * as.integer(mtb_active) + 
+                  1 * as.integer(mtb_support_tolerace) + 
+                  1 * as.integer(mtb_positive_health) + 
+                  1 * as.integer(mtb_infra_funding) + 
+                  1 * as.integer(mtb_region_quali) + 
+                  1 * as.integer(mtb_attr_supply) + 
+                  1 * as.integer(mtb_economy) + 
+                  1 * as.integer(mtb_tourism) +
+                  1 * as.integer(mtb_interests)),
+         normalized_score = (score / 36) * 100,
+         na.rm = TRUE) %>%
+  ungroup()
+str(data)
+```
+
 ## Export
 
 ```{r}
